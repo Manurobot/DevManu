@@ -1,13 +1,29 @@
 <script>
-	import { onMount } from 'svelte'
-	let data
-	onMount(async () => {
-		data = await fetch('https://desormex.com/JuegosLSM_Back/public/api/desormex/juego-memoria').then(x => x.json())
-	})
+	import axios from 'axios';
+	import baseUrl from '../env/environments'
+
+	// export let url = 'https://desormex.com/JuegosLSM_Back/public/api/desormex/juego-memoria';
+
+	let List = [];
+
+	const getPosts = async () => {
+  const response = await axios.get(baseUrl);
+  if (response.status === 200) {
+    const posts = response.data.Payload;
+	List = posts;
+  } else {
+    throw new Error('Error fetching posts');
+  }
+};
+
+getPosts();
 </script>
 
 <h1>Posts</h1>
 
-<pre>
-	{JSON.stringify(data, null, 2)}
-</pre>
+<ul>
+  {#each List as post}
+    <li>{post.Nombre}</li>
+	<img src="{post.Base}" width="100px"/>
+  {/each}
+</ul>

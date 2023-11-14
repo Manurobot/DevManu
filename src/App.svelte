@@ -1,47 +1,81 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import { onMount } from "svelte";
+
+  let cv = {
+    name: "Tu nombre",
+    title: "Tu título",
+    email: "tucorreo@email.com",
+    phone: "tutelefono",
+    linkedin: "tulinkedin",
+    github: "tugithub",
+    skills: ["tus habilidades"],
+    experience: [
+      {
+        company: "Nombre de la empresa",
+        position: "Cargo",
+        start: "Fecha de inicio",
+        end: "Fecha de finalización",
+        description: "Descripción de tu experiencia",
+      },
+    ],
+    education: [
+      {
+        institution: "Nombre de la institución",
+        degree: "Título",
+        start: "Fecha de inicio",
+        end: "Fecha de finalización",
+      },
+    ],
+  };
+
+  onMount(() => {
+    // Aquí puedes agregar código JavaScript para inicializar tu aplicación
+  });
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
 
-  <div class="card">
-    <Counter />
+<div class="cv">
+  <div class="header">
+    <h1>{ cv.name }</h1>
+    <h2>{ cv.title }</h2>
+    <h3>{ cv.email }</h3>
+    <h3>{ cv.phone }</h3>
+    <h3>{ cv.linkedin }</h3>
+    <h3>{ cv.github }</h3>
   </div>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+  <div class="skills">
+    <h2>Skills</h2>
+    <ul>
+      {#each cv.skills as skill}
+        <li>{skill}</li>
+      {/each}
+    </ul>
+  </div>
 
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
+  <div class="experience">
+    <h2>Experience</h2>
+    <ul>
+      {#each cv.experience as experience}
+        <li>
+          <h4>{ experience.company } - { experience.position }</h4>
+          <h5>{ experience.start } - { experience.end }</h5>
+          <p>{ experience.description }</p>
+        </li>
+      {/each}
+    </ul>
+  </div>
 
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
+  <div class="education">
+    <h2>Education</h2>
+    <ul>
+      {#each cv.education as education}
+        <li>
+          <h4>{ education.institution }</h4>
+          <h5>{ education.degree }</h5>
+          <h5>{ education.start } - { education.end }</h5>
+        </li>
+      {/each}
+    </ul>
+  </div>
+</div>

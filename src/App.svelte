@@ -79,3 +79,30 @@
     </ul>
   </div>
 </div>
+
+<style>
+  .cv {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.skills {
+  margin-bottom: 2rem;
+}
+
+.experience {
+  margin-bottom: 2rem;
+}
+
+.education {
+  margin-bottom: 2rem;
+}
+
+
+</style>

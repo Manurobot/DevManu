@@ -1,10 +1,19 @@
 <script>
-  let count = 0
+  let contar = 0
   const increment = () => {
-    count += 1
+    contar += 1
   }
+
+  $: string = `Tu has pulsado ${contar} click.`;
+
+  
+  $: if(contar > 5) {
+    console.log(`El contador es ${contar}`);
+    alert(string);
+  }
+
 </script>
 
 <button on:click={increment}>
-  count is {count}
+  contar is {contar}
 </button>

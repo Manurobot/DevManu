@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { onMount } from "svelte";
 
   let cv = {
@@ -105,4 +105,19 @@
 }
 
 
-</style>
+</style> -->
+
+
+<script>
+  import Main from "./layouts/Main.svelte";
+  import Counter from "./lib/Counter.svelte";
+
+
+  let contar 
+
+
+</script>
+
+
+<Counter/>
+<Main/>
